@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -18,6 +19,9 @@ mongoose.connect('mongodb://localhost:27017/notes-app', { useNewUrlParser: true 
 //body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//defining static folder
+app.use('/images', express.static(path.join('backend/images')));
 
 //Cors
 app.use((req, res, next) => {
